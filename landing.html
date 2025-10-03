@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birds and Animal Watcher</title>
+</head>
+<body>
+    <style>
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        body {
+            margin: 0px;
+            background-color: rgba(3, 255, 49, 0.114);
+            text-align: center;
+        }
+
+        #one {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            color: green
+        }
+
+        input {
+            padding: 10px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            border-radius: 2px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <div id="one">
+        <div>
+            <h1>Birds & Animal Watcher 🐦 🦁</h1>
+            <input type="text" placeholder="Enter animal or bird name" id="searchBar">
+            <button onclick="getDetails()">Search</button>
+            <button>Clear</button>
+        </div>
+        <div id="container">
+        </div>
+    </div>
+    <script>
+        async function getDetails() {
+            let search = document.getElementById("searchBar").value
+            let rawData = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${search}`)
+            let data = await rawData.json()
+            console.log(data);
+
+            document.getElementById("container").innerHTML = `<div class="sub-container"> 
+            <img src="${data.originalimage.source}" height="150" width="150">
+            <h3>Title:${data.title} </h3>
+            <p>Description:${data.description}</p>
+            <div>${data.extract_html}</div>
+            <a href="${data.content_urls.desktop.page}">
+            <button>More info</button></a>
+            </div>`
+        }
+     
+    </script>
+</body>
+</html>

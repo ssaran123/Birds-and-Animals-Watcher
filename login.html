@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birds and Animal Watcher</title>
+    <style>
+        body {
+            background-color: #3498db;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            margin: 100px auto;
+            width: 320px;
+            padding: 32px 24px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .login-container h1 {
+            margin-bottom: 24px;
+            
+        }
+
+        .login-container input {
+            display: block;
+            width: 90%;
+            margin: 14px auto 24px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            padding: 12px 36px;
+            border: none;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background: #217dbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <input type="text" placeholder="Username" id="one">
+        <input type="password" placeholder="Password" id="two">
+        <button onclick="loginfunc()">Login</button>
+    </div>
+    <script>
+        function loginfunc() {
+            let a = document.getElementById("one").value;
+            let b = document.getElementById("two").value;
+            if (a == "Arun" && b == "arun123") {
+                window.location="./landing.html";
+            } else {
+                alert('Incorrect username or password');
+            }
+        }
+    </script>
+</body>
+</html>
